@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Blather</title>
+</head>
+<body>
+	<header>
+	<h1><a href="/">Blather</a> </h1>
+	<nav>
+	     <ul>
+	     <li><a href="/register">SIGN UP</a></li>
+	     <br>
+	     {% if user.is_authenticated %}
+	          <li>Logged in as: {{user}}. {{user.profile.bio}}
+	          	  {%if user.profile.blog%}<a href="{{user.profile.blog}}">blog</a>
+	          	  {%endif%}
+	          </li>
+	          <li><a href="{%url 'myview'%}">My blats</a></li>
+	          <li><a href="{%url 'logout' %}?next=/">LOG OUT</a></li>
+	          <li><a href="/create">Create new Blat</a></li>
+          {% else %}
+              <li><a href="/login/?next=/">LOG IN</a></li>
+          {% endif %}
+          </ul>
+
+	</nav>
+		
+	</header>
+	<div id="content">
+	      {% block content %}{% endblock %}
+	 </div>
+
+</body>
