@@ -34,7 +34,7 @@ urlpatterns = [
     url(r'^(?P<pk>[0-9]+)/edit/$',views.EditBlatView.as_view(),name='editblat'),
     #url(r'^register/$','register',name='accounts_register'),
     url('^register/', CreateView.as_view(
-            template_name='register.html',
+            template_name='blat/register.html',
             form_class=UserCreationForm,
             success_url='/'
     )),
